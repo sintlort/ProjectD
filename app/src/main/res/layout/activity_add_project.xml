@@ -5,49 +5,138 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity_add_project"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/nama_project"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="nama_project"/>
-    <EditText
-        android:id="@+id/start_project"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="YYYY/MM/DD" />
-    <EditText
-        android:id="@+id/end_project"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="YYYY/MM/DD" />
-    <EditText
-        android:id="@+id/desc_project"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="desc_project" />
-    <EditText
-        android:id="@+id/no_Hproject"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="no_hp" />
-    <EditText
-        android:id="@+id/max_orang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="max_orang" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/submitproject"
-        android:hint="Submit"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Project"
+                android:textSize="20dp"
+                android:textColor="@color/blackk"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/nama_project"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Nama Project"
+                android:drawableLeft="@drawable/checkmark_register"
+                android:drawablePadding="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Project"
+                android:textSize="20dp"
+                android:textColor="@color/blackk"
+                android:layout_marginLeft="30dp"/>
+
+            <EditText
+                android:id="@+id/start_project"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="YYYY/MM/DD"
+                android:drawableLeft="@drawable/black_date"
+                android:drawablePadding="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="End Project"
+                android:textSize="20dp"
+                android:textColor="@color/blackk"
+                android:layout_marginLeft="30dp"/>
+
+            <EditText
+                android:id="@+id/end_project"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="YYYY/MM/DD"
+                android:drawableLeft="@drawable/black_date"
+                android:drawablePadding="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi"
+                android:textSize="20dp"
+                android:textColor="@color/blackk"
+                android:layout_marginLeft="30dp"/>
+
+            <EditText
+                android:id="@+id/desc_project"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/list_desc"
+                android:drawablePadding="20dp"
+                android:hint="Deskripsi Project" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Hp."
+                android:textSize="20dp"
+                android:textColor="@color/blackk"
+                android:layout_marginLeft="30dp"/>
+
+            <EditText
+                android:id="@+id/no_Hproject"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/black_phone"
+                android:drawablePadding="20dp"
+                android:hint="No HP yang dapat dihubungi" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Maksimal Orang"
+                android:textSize="20dp"
+                android:textColor="@color/blackk"
+                android:layout_marginLeft="30dp"/>
+
+            <EditText
+                android:id="@+id/max_orang"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Maksimal Pertisipan"
+                android:drawableLeft="@drawable/black_person"
+                android:drawablePadding="20dp"/>
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/submitproject"
+                android:text="Submit"
+                android:textColor="@color/blackk"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

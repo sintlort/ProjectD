@@ -6,4 +6,5 @@
     <string name="deleteproject">Delete Project</string>
     <string name="joinproject">Join Project</string>
     <string name="leaveproject">Leave Project</string>
+    <string name="indonesian_phone">+62</string>
 </resources>
