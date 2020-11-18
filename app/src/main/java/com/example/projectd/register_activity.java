@@ -40,6 +40,7 @@ public class register_activity extends AppCompatActivity {
     RadioGroup mRadioGroup;
     String dob , mGender = "Laki laki";
     BaseAPIService mApiService;
+    EditText bbb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -159,7 +160,7 @@ public class register_activity extends AppCompatActivity {
                                 } else {
                                     String error_message = jsonRESULTS.getString("message");
                                     if (error_message.equals("username has been used")){
-                                        Toast.makeText(mContext, "Username telah digunakanw!!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(mContext, "Username telah digunakan!!", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             } catch (JSONException e) {

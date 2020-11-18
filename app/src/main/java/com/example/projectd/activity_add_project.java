@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.projectd.Model.project;
 import com.example.projectd.Preference.shared_preference_class;
 import com.example.projectd.retrofitClient.BaseAPIService;
 import com.example.projectd.retrofitClient.UtilsApi;
@@ -21,6 +22,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -33,6 +35,7 @@ public class activity_add_project extends AppCompatActivity {
     Button submitProject;
     Context mContext;
     BaseAPIService mApiService;
+    Call<List<project>> call = (Call<List<project>>) UtilsApi.getAPIService().getAllProject();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,7 @@ public class activity_add_project extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 request_addproject();
+                getProject();
             }
         });
 
@@ -186,7 +190,7 @@ public class activity_add_project extends AppCompatActivity {
                             try {
                                 JSONObject jsonRESULTS = new JSONObject(response.body().string());
                                 if (jsonRESULTS.getString("status").matches("200")){
-                                    Toast.makeText(mContext, "BERHASIL Register", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(mContext, "BERHASIL Register Project", Toast.LENGTH_SHORT).show();
                                 } else {
                                     String error_message = jsonRESULTS.getString("message");
                                     if (error_message.equals("data not found")){
@@ -208,5 +212,22 @@ public class activity_add_project extends AppCompatActivity {
                         Log.e("debug", "onFailure: ERROR > " + t.toString());
                     }
                 });
+    }
+
+    private void getProject(){
+
+        call.enqueue(new Callback<List<project>>() {
+            @Override
+            public void onResponse(Call<List<project>> call, Response<List<project>> response) {
+                if(response.isSuccessful()){
+                    Log.e("success", response.body().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<project>> call, Throwable t) {
+                    Log.e("failure", t.getLocalizedMessage());
+            }
+        });
     }
 }

@@ -1,9 +1,14 @@
 package com.example.projectd.retrofitClient;
 
+import com.example.projectd.Model.project;
+
+import java.util.List;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface BaseAPIService {
@@ -13,7 +18,7 @@ public interface BaseAPIService {
     Call<ResponseBody> loginRequest(@Field("username") String username,
                                     @Field("password") String password);
 
-    // Fungsi ini untuk memanggil API http://10.0.2.2/mahasiswa/register.php
+
     @FormUrlEncoded
     @POST("register-api")
     Call<ResponseBody> registerRequest(@Field("username") String username,
@@ -35,5 +40,8 @@ public interface BaseAPIService {
                                        @Field("status_project") int status_project,
                                        @Field("no_hp") String no_hp,
                                        @Field("max_orang") String max_orang);
+
+    @GET("get-project")
+    Call<List<project>> getAllProject();
 
 }
