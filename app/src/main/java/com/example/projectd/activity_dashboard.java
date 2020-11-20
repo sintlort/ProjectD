@@ -31,7 +31,7 @@ public class activity_dashboard extends AppCompatActivity {
         addProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(activity_dashboard.this, activity_add_project.class);
+                Intent intent = new Intent(activity_dashboard.this, getProject.class);
                 startActivity(intent);
             }
         });

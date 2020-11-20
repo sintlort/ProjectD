@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity_add_project"></activity>
+        <activity android:name=".getProject"></activity>
+        <activity android:name=".activity_add_project" />
         <activity android:name=".activity_dashboard" />
         <activity android:name=".register_activity" />
         <activity

@@ -1,7 +1,7 @@
 package com.example.projectd.Model;
 
 public class project {
-
+    private String id;
     private String nama_project;
     private String start_project;
     private String end_project;
@@ -10,6 +10,14 @@ public class project {
     private String no_hp;
     private String max_orang;
     private String user_id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNama_project() {
         return nama_project;
@@ -78,7 +86,8 @@ public class project {
     @Override
     public String toString() {
         return "project{" +
-                "nama_project='" + nama_project + '\'' +
+                "id='" + id + '\'' +
+                ", nama_project='" + nama_project + '\'' +
                 ", start_project='" + start_project + '\'' +
                 ", end_project='" + end_project + '\'' +
                 ", desc_project='" + desc_project + '\'' +

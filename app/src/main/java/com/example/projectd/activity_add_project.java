@@ -3,6 +3,7 @@ package com.example.projectd;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -35,7 +36,7 @@ public class activity_add_project extends AppCompatActivity {
     Button submitProject;
     Context mContext;
     BaseAPIService mApiService;
-    Call<List<project>> call = (Call<List<project>>) UtilsApi.getAPIService().getAllProject();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +55,8 @@ public class activity_add_project extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 request_addproject();
-                getProject();
+                Intent intent = new Intent(activity_add_project.this, getProject.class);
+                startActivity(intent);
             }
         });
 
@@ -214,20 +216,5 @@ public class activity_add_project extends AppCompatActivity {
                 });
     }
 
-    private void getProject(){
 
-        call.enqueue(new Callback<List<project>>() {
-            @Override
-            public void onResponse(Call<List<project>> call, Response<List<project>> response) {
-                if(response.isSuccessful()){
-                    Log.e("success", response.body().toString());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<project>> call, Throwable t) {
-                    Log.e("failure", t.getLocalizedMessage());
-            }
-        });
-    }
 }
