@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectd.Model.project;
@@ -17,8 +18,10 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
 
     private List<project> projectData;
     private Context context;
+    private ClickedItem clickedItem;
 
-    public ProjectAdapter() {
+    public ProjectAdapter(ClickedItem clickedItem) {
+        this.clickedItem = clickedItem;
     }
 
     public void setData(List<project> projectsData){
@@ -48,7 +51,17 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
         holder.start_project.setText(start_date);
         holder.end_project.setText(end_date);
         holder.max_orang.setText(max_orang);
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickedItem.ClickedProject(project);
+            }
+        });
 
+    }
+
+    public interface ClickedItem{
+        public void ClickedProject(project projectData);
     }
 
     @Override
@@ -58,9 +71,11 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView _id, nama_project, start_project, end_project, max_orang;
+        CardView cardView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            cardView = itemView.findViewById(R.id.cardo);
             _id = itemView.findViewById(R.id._id_project);
             nama_project = itemView.findViewById(R.id.project_name);
             start_project = itemView.findViewById(R.id.start_date);

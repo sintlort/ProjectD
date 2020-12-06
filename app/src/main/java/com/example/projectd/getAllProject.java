@@ -22,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class getProject extends AppCompatActivity implements ProjectAdapter.ClickedItem {
+public class getAllProject extends AppCompatActivity implements ProjectAdapter.ClickedItem {
     ImageView addButton;
     RecyclerView recyclerView;
     ProjectAdapter projectAdapter;
@@ -30,7 +30,7 @@ public class getProject extends AppCompatActivity implements ProjectAdapter.Clic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_project);
+        setContentView(R.layout.activity_get_all_project);
         recyclerView = findViewById(R.id.recyclerProject);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -41,23 +41,12 @@ public class getProject extends AppCompatActivity implements ProjectAdapter.Clic
         getProject();
 
         addButton = findViewById(R.id.add_project_button);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goAddProject();
-            }
-        });
-
-
     }
 
-    private void goAddProject() {
-        Intent intent = new Intent(getProject.this, activity_add_project.class);
-        startActivity(intent);
-    }
+
 
     private void getProject(){
-        Call<List<project>> call = (Call<List<project>>) UtilsApi.getAPIService().getAllProject(shared_preference_class.getLoggedInId(mContext));
+        Call<List<project>> call = (Call<List<project>>) UtilsApi.getAPIService().getOtherProject(shared_preference_class.getLoggedInId(mContext));
         call.enqueue(new Callback<List<project>>() {
             @Override
             public void onResponse(Call<List<project>> call, Response<List<project>> response) {
@@ -66,7 +55,6 @@ public class getProject extends AppCompatActivity implements ProjectAdapter.Clic
                     List<project> projectList = response.body();
                     projectAdapter.setData(projectList);
                     recyclerView.setAdapter(projectAdapter);
-                    addButton.bringToFront();
                 }
             }
 

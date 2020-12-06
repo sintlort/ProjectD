@@ -11,13 +11,14 @@ import android.os.Bundle;
 import android.view.View;
 
 public class activity_dashboard extends AppCompatActivity {
-    CardView addProject, removeAccount;
+    CardView addProject, removeAccount, otherProject;
     Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         removeAccount = findViewById(R.id.card_about);
+        otherProject = findViewById(R.id.card_register);
         mContext = this;
         removeAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +33,15 @@ public class activity_dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity_dashboard.this, getProject.class);
+                startActivity(intent);
+            }
+        });
+
+        otherProject = findViewById(R.id.card_register);
+        otherProject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity_dashboard.this, getAllProject.class);
                 startActivity(intent);
             }
         });

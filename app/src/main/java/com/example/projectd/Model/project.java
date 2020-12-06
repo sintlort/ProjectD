@@ -1,6 +1,8 @@
 package com.example.projectd.Model;
 
-public class project {
+import java.io.Serializable;
+
+public class project implements Serializable {
     private String id;
     private String nama_project;
     private String start_project;

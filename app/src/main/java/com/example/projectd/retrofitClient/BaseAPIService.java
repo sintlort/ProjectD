@@ -12,7 +12,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface BaseAPIService {
-    // Fungsi ini untuk memanggil API http://10.0.2.2/mahasiswa/login.php
+
     @FormUrlEncoded
     @POST("login-api")
     Call<ResponseBody> loginRequest(@Field("username") String username,
@@ -41,7 +41,12 @@ public interface BaseAPIService {
                                        @Field("no_hp") String no_hp,
                                        @Field("max_orang") String max_orang);
 
-    @GET("get-project")
-    Call<List<project>> getAllProject();
+    @FormUrlEncoded
+    @POST("get-project")
+    Call<List<project>> getAllProject(@Field("id") String id);
+
+    @FormUrlEncoded
+    @POST("get-other-project")
+    Call<List<project>> getOtherProject(@Field("id") String id);
 
 }

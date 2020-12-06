@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                                 JSONObject jsonRESULTS = new JSONObject(response.body().string());
                                 if (jsonRESULTS.getString("status").matches("200")){
                                     Toast.makeText(mContext, "BERHASIL LOGIN", Toast.LENGTH_SHORT).show();
+                                    String _id = jsonRESULTS.getJSONObject("user").getString("id");
                                     String user = jsonRESULTS.getJSONObject("user").getString("username");
                                     String nama = jsonRESULTS.getJSONObject("user").getString("nama_user");
                                     String dob = jsonRESULTS.getJSONObject("user").getString("tgl_lahir");
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                                     String address = jsonRESULTS.getJSONObject("user").getString("alamat");
                                     String email = jsonRESULTS.getJSONObject("user").getString("email");
                                     String phone = jsonRESULTS.getJSONObject("user").getString("telp");
-                                    shared_preference_class.setLoggedInUser(mContext,user,nama,dob,address,email,phone,gender);
+                                    shared_preference_class.setLoggedInUser(mContext,_id,user,nama,dob,address,email,phone,gender);
                                     Toast.makeText(mContext, nama, Toast.LENGTH_SHORT).show();
                                     Intent dashboard = new Intent(MainActivity.this, activity_dashboard.class);
                                     startActivity(dashboard);

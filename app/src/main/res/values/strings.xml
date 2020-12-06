@@ -2,7 +2,8 @@
     <string name="app_name">Project D</string>
     <string name="gender1">Laki Laki</string>
     <string name="gender2">Perempuan</string>
-    <string name="addproject">Add Project</string>
+    <string name="myproject">My Project</string>
+    <string name="allproject">Others Project</string>
     <string name="deleteproject">Delete Project</string>
     <string name="joinproject">Join Project</string>
     <string name="leaveproject">Leave Project</string>

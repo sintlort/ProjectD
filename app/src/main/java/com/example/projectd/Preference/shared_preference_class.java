@@ -9,6 +9,7 @@ public class shared_preference_class {
 
     /** Pendeklarasian key-data berupa String, untuk sebagai wadah penyimpanan data.
      * Jadi setiap data mempunyai key yang berbeda satu sama lain */
+    static final String LOGGED_IN_ID = "logged_in_user_id";
     static final String LOGGED_IN_USER = "logged_in_user", LOGGED_IN_NAME = "logged_in_name";
     static final String LOGGED_IN_TANGGAL_LAHIR = "logged_in_dob", LOGGED_IN_ALAMAT = "logged_in_address";
     static final String LOGGED_IN_EMAIL = "logged_in_email", LOGGED_IN_TELP = "logged_in_phone";
@@ -21,8 +22,9 @@ public class shared_preference_class {
 
     /** Deklarasi Edit Preferences dan mengubah data
      *  yang memiliki key KEY_USERNAME_SEDANG_LOGIN dengan parameter username */
-    public static void setLoggedInUser(Context context, String username, String name, String dob, String address, String email, String phone, String gender){
+    public static void setLoggedInUser(Context context,String id, String username, String name, String dob, String address, String email, String phone, String gender){
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString(LOGGED_IN_ID,id);
         editor.putString(LOGGED_IN_USER, username);
         editor.putString(LOGGED_IN_NAME, name);
         editor.putString(LOGGED_IN_TANGGAL_LAHIR, dob);
@@ -37,6 +39,7 @@ public class shared_preference_class {
     /** Mengembalikan nilai dari key KEY_USERNAME_SEDANG_LOGIN berupa String */
     public static ArrayList<String> getLoggedInUser(Context context){
         ArrayList<String> LOGGED_ARRAY = new ArrayList<String>();
+        LOGGED_ARRAY.add(getSharedPreference(context).getString(LOGGED_IN_ID,""));
         LOGGED_ARRAY.add(getSharedPreference(context).getString(LOGGED_IN_USER,""));
         LOGGED_ARRAY.add(getSharedPreference(context).getString(LOGGED_IN_NAME,""));
         LOGGED_ARRAY.add(getSharedPreference(context).getString(LOGGED_IN_TANGGAL_LAHIR,""));
@@ -56,10 +59,15 @@ public class shared_preference_class {
         return getSharedPreference(context).getString(LOGGED_IN_USER,"");
     }
 
+    public static String getLoggedInId(Context context){
+        return getSharedPreference(context).getString(LOGGED_IN_ID,"");
+    }
+
     /** Deklarasi Edit Preferences dan menghapus data, sehingga menjadikannya bernilai default
      *  khusus data yang memiliki key KEY_USERNAME_SEDANG_LOGIN dan KEY_STATUS_SEDANG_LOGIN */
     public static void clearLoggedInUser (Context context){
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.remove(LOGGED_IN_ID);
         editor.remove(LOGGED_IN_USER);
         editor.remove(LOGGED_IN_NAME);
         editor.remove(LOGGED_IN_TANGGAL_LAHIR);
