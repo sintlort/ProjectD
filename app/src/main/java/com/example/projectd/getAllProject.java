@@ -68,7 +68,7 @@ public class getAllProject extends AppCompatActivity implements ProjectAdapter.C
     @Override
     public void ClickedProject(project projectData) {
         Log.e("Clicked",projectData.toString());
-        Intent intent = new Intent(this, DetailProject.class).putExtra("data",projectData);
+        Intent intent = new Intent(this, DetailOtherProject.class).putExtra("data",projectData);
         startActivity(intent);
     }
 }

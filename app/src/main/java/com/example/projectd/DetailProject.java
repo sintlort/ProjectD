@@ -9,7 +9,7 @@ import com.example.projectd.Model.project;
 import org.w3c.dom.Text;
 
 public class DetailProject extends AppCompatActivity {
-    TextView nama, start, end;
+    TextView nama, start, end, descP;
     project Project;
 
 
@@ -20,6 +20,7 @@ public class DetailProject extends AppCompatActivity {
         nama = findViewById(R.id.nama);
         start = findViewById(R.id.tanggalstart);
         end = findViewById(R.id.tanggalend);
+        descP = findViewById(R.id.description_project);
 
         Intent intent = getIntent();
         if(intent.getExtras() !=null){
@@ -27,10 +28,11 @@ public class DetailProject extends AppCompatActivity {
             String namaproject = Project.getNama_project();
             String startdate = Project.getStart_project();
             String enddate = Project.getEnd_project();
-
+            String desc = Project.getDesc_project();
             nama.setText(namaproject);
             start.setText(startdate);
             end.setText(enddate);
+            descP.setText(desc);
 
         }
     }
