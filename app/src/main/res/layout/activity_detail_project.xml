@@ -45,12 +45,16 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="5dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:layout_weight="1"
+                android:weightSum="2">
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="15dp"
-                    android:layout_margin="7dp">
+                    android:layout_margin="7dp"
+                    android:layout_weight="1"
+                    android:weightSum="2">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -58,11 +62,11 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Dimulainya \nProject"
+                            android:text="Start \nProject"
                             android:textSize="20dp"
                             android:textColor="@color/blackk"
                             android:textStyle="bold"
-                            android:padding="10dp"
+                            android:padding="8dp"
                             android:gravity="center"
                             android:layout_gravity="center"/>
                         <View
@@ -84,7 +88,9 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="15dp">
+                    app:cardCornerRadius="15dp"
+                    android:layout_weight="1"
+                    android:weightSum="2">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -162,18 +168,31 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:gravity="right">
+                android:gravity="center">
                 <Button
-                    android:id="@+id/button_join_project"
+                    android:id="@+id/edit_project"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Join Project"
+                    android:text="Edit Project"
                     android:textSize="20dp"
-                    android:background="@drawable/greencorner"
+                    android:visibility="visible"
+                    android:background="@drawable/bluecorner"
                     android:textColor="@color/whito"
                     android:padding="10dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:layout_marginHorizontal="5dp"/>
+                <Button
+                    android:id="@+id/stop_project"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stop Project"
+                    android:textSize="20dp"
+                    android:visibility="visible"
+                    android:background="@drawable/redcorner"
+                    android:textColor="@color/whito"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:layout_marginHorizontal="5dp"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

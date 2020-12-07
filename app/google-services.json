@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "704508251124",
+    "firebase_url": "https://projectd-3c714.firebaseio.com",
+    "project_id": "projectd-3c714",
+    "storage_bucket": "projectd-3c714.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704508251124:android:8c033166fd55eb07e707a1",
+        "android_client_info": {
+          "package_name": "com.pratikum.projectd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "704508251124-fqd16h8jcq66mnoo8ae85u0b4kjkp5gf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_YgqPEfe_SUY8ik1Dh225xhoUafKq4_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "704508251124-fqd16h8jcq66mnoo8ae85u0b4kjkp5gf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

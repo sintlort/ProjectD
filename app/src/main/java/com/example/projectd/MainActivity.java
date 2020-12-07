@@ -16,6 +16,7 @@ import com.example.projectd.Preference.shared_preference_class;
 import com.example.projectd.SQLite.DBProject;
 import com.example.projectd.retrofitClient.BaseAPIService;
 import com.example.projectd.retrofitClient.UtilsApi;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().setBackgroundDrawableResource(R.drawable.background);
+        FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
         login_button = (Button) findViewById(R.id.login_button);
         username = findViewById(R.id.inputusername);
         password = findViewById(R.id.inputPassword);

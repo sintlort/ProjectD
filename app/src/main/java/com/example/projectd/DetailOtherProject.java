@@ -12,7 +12,7 @@ import com.example.projectd.Model.project;
 
 public class DetailOtherProject extends AppCompatActivity {
     TextView nama_project, start_Theproject, deadline_project, description_project;
-    String id_project;
+    String id_project, status_project;
     Button submitProject_registration;
     project projectData;
     @Override
@@ -25,6 +25,9 @@ public class DetailOtherProject extends AppCompatActivity {
         description_project = findViewById(R.id.description_other_project);
         showProject();
         submitProject_registration = findViewById(R.id.button_join_project);
+        if(status_project.matches("0")){
+            submitProject_registration.setVisibility(View.GONE);
+        }
         submitProject_registration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,7 +45,7 @@ public class DetailOtherProject extends AppCompatActivity {
             String deadlineOfProject = projectData.getEnd_project();
             String descriptionOfProject = projectData.getDesc_project();
             this.id_project = projectData.getId();
-
+            this.status_project = projectData.getStatus_project();
             nama_project.setText(nameOfProject);
             start_Theproject.setText(startOfProject);
             deadline_project.setText(deadlineOfProject);

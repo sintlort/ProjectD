@@ -49,4 +49,21 @@ public interface BaseAPIService {
     @POST("get-other-project")
     Call<List<project>> getOtherProject(@Field("id") String id);
 
+    @FormUrlEncoded
+    @POST("read-project")
+    Call<ResponseBody> readMyProject(@Field("id") String id);
+
+    @FormUrlEncoded
+    @POST("update-project")
+    Call<ResponseBody> updateMyProject(@Field("id") String id,
+                                       @Field("nama_project") String nama_project,
+                                       @Field("start_project") String start_project,
+                                       @Field("end_project") String end_project,
+                                       @Field("desc_project") String desc_project,
+                                       @Field("no_hp") String no_hp,
+                                       @Field("max_orang") String max_orang);
+
+    @FormUrlEncoded
+    @POST("stop-my-project")
+    Call<ResponseBody> stopMyProject(@Field("id") String id);
 }

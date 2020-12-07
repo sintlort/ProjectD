@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailOtherProject"></activity>
+        <activity android:name=".UpdateProject"></activity>
+        <activity android:name=".DetailOtherProject" />
         <activity android:name=".getAllProject" />
         <activity android:name=".DetailProject" />
         <activity android:name=".getProject" />
@@ -27,6 +28,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".FCM.FirebaseMessageReceiver">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

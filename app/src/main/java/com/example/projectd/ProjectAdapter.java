@@ -47,7 +47,11 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
         String end_date = project.getEnd_project();
         String max_orang = project.getMax_orang();
         holder._id.setText(_id);
-        holder.nama_project.setText(nama_project);
+        if(project.getStatus_project().matches("1")){
+            holder.nama_project.setText(nama_project.concat(" (Active)"));
+        } else {
+            holder.nama_project.setText(nama_project.concat(" (InActive)"));
+        }
         holder.start_project.setText(start_date);
         holder.end_project.setText(end_date);
         holder.max_orang.setText(max_orang);

@@ -101,7 +101,7 @@ public class activity_add_project extends AppCompatActivity {
                         clean = String.format("%02d%02d%02d",year, mon, day);
                     }
 
-                    clean = String.format("%s/%s/%s", clean.substring(0, 4),
+                    clean = String.format("%s-%s-%s", clean.substring(0, 4),
                             clean.substring(4, 6),
                             clean.substring(6, 8));
 
