@@ -22,8 +22,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -55,8 +59,7 @@ public class activity_add_project extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 request_addproject();
-                Intent intent = new Intent(activity_add_project.this, getProject.class);
-                startActivity(intent);
+
             }
         });
 
@@ -162,7 +165,7 @@ public class activity_add_project extends AppCompatActivity {
                         clean = String.format("%02d%02d%02d",year, mon, day);
                     }
 
-                    clean = String.format("%s/%s/%s", clean.substring(0, 4),
+                    clean = String.format("%s-%s-%s", clean.substring(0, 4),
                             clean.substring(4, 6),
                             clean.substring(6, 8));
 
@@ -184,36 +187,56 @@ public class activity_add_project extends AppCompatActivity {
     }
 
     private void request_addproject() {
-        mApiService.addProjectRequest(user, nProject.getText().toString(),startProject, endProject, dProject.getText().toString(), 1, nHP.getText().toString(), xOrang.getText().toString())
-                .enqueue(new Callback<ResponseBody>() {
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        if(response.isSuccessful()){
-                            try {
-                                JSONObject jsonRESULTS = new JSONObject(response.body().string());
-                                if (jsonRESULTS.getString("status").matches("200")){
-                                    Toast.makeText(mContext, "BERHASIL Register Project", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    String error_message = jsonRESULTS.getString("message");
-                                    if (error_message.equals("data not found")){
-                                        Toast.makeText(mContext, "Login Gagal, Username atau Password salah!!", Toast.LENGTH_SHORT).show();
+        try {
+            SimpleDateFormat curFormater = new SimpleDateFormat("yyyy-MM-dd");
+            Date date1 = curFormater.parse(startProject);
+            Date date2 = curFormater.parse(endProject);
+            Date now = Calendar.getInstance().getTime();
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            String formattedDate = df.format(now);
+            Date datenow = curFormater.parse(formattedDate);
+            if (datenow.compareTo(date1)>0){
+                Toast.makeText(this, "Mulainya project tidak boleh kurang dari hari ini", Toast.LENGTH_SHORT).show();
+            }else if(date1.compareTo(date2)>0){
+                Toast.makeText(this, "date mulai lebih besar dariapda date selesai", Toast.LENGTH_SHORT).show();
+            }else if(date1.compareTo(date2)<0){
+                mApiService.addProjectRequest(user, nProject.getText().toString(),startProject, endProject, dProject.getText().toString(), 1, nHP.getText().toString(), xOrang.getText().toString())
+                        .enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                if(response.isSuccessful()){
+                                    try {
+                                        JSONObject jsonRESULTS = new JSONObject(response.body().string());
+                                        if (jsonRESULTS.getString("status").matches("200")){
+                                            Toast.makeText(mContext, "BERHASIL Register Project", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(activity_add_project.this, getProject.class);
+                                            startActivity(intent);
+                                        } else {
+                                            String error_message = jsonRESULTS.getString("message");
+                                            if (error_message.equals("data not found")){
+                                                Toast.makeText(mContext, "Login Gagal, Username atau Password salah!!", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
                                     }
+                                } else {
+
                                 }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            } catch (IOException e) {
-                                e.printStackTrace();
                             }
-                        } else {
 
-                        }
-                    }
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                Log.e("debug", "onFailure: ERROR > " + t.toString());
+                            }
+                        });
+            }
+        } catch (ParseException e){
+            e.printStackTrace();
+        }
 
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Log.e("debug", "onFailure: ERROR > " + t.toString());
-                    }
-                });
     }
 
 
