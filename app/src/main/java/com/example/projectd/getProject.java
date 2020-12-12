@@ -1,5 +1,6 @@
 package com.example.projectd;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,12 +10,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.example.projectd.Model.project;
 import com.example.projectd.Preference.shared_preference_class;
 import com.example.projectd.retrofitClient.UtilsApi;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -32,7 +35,9 @@ public class getProject extends AppCompatActivity implements ProjectAdapter.Clic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_project);
         recyclerView = findViewById(R.id.recyclerProject);
-
+        BottomNavigationView botNav = findViewById(R.id.botnav);
+        botNav.setOnNavigationItemSelectedListener(navListener);
+        botNav.setSelectedItemId(R.id.project);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mContext = this;
@@ -83,4 +88,26 @@ public class getProject extends AppCompatActivity implements ProjectAdapter.Clic
         Intent intent = new Intent(this, DetailProject.class).putExtra("data",projectData);
         startActivity(intent);
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                    switch(menuItem.getItemId()){
+                        case R.id.dashboard:
+                            Intent intent = new Intent(getProject.this, activity_dashboard.class);
+                            startActivity(intent);
+                            break;
+                        case R.id.project:
+                            break;
+                        case R.id.other_project:
+                            Intent intent1 = new Intent(getProject.this, getAllProject.class);
+                            startActivity(intent1);
+                            break;
+                        case R.id.profile:
+                            break;
+                    }
+                    return true;
+                }
+            };
 }
