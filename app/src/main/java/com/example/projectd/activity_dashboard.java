@@ -69,6 +69,8 @@ public class activity_dashboard extends AppCompatActivity {
                             startActivity(intent1);
                             break;
                         case R.id.profile:
+                            Intent profile = new Intent(activity_dashboard.this, ProfileUser.class);
+                            startActivity(profile);
                             break;
                     }
                     return true;
