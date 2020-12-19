@@ -66,4 +66,16 @@ public interface BaseAPIService {
     @FormUrlEncoded
     @POST("stop-my-project")
     Call<ResponseBody> stopMyProject(@Field("id") String id);
+
+    @FormUrlEncoded
+    @POST("post-fcm")
+    Call<ResponseBody> postFCM(@Field("username") String username);
+
+    @GET("send-fcm")
+    Call<ResponseBody> sendFCM();
+
+    @FormUrlEncoded
+    @POST("fcm-topics")
+    Call<ResponseBody> fcmTopics(@Field("fcm") String fcm,
+                                 @Field("message") String message);
 }

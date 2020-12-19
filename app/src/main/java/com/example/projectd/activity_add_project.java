@@ -197,8 +197,10 @@ public class activity_add_project extends AppCompatActivity {
             Date datenow = curFormater.parse(formattedDate);
             if (datenow.compareTo(date1)>0){
                 Toast.makeText(this, "Mulainya project tidak boleh kurang dari hari ini", Toast.LENGTH_SHORT).show();
+
             }else if(date1.compareTo(date2)>0){
                 Toast.makeText(this, "date mulai lebih besar dariapda date selesai", Toast.LENGTH_SHORT).show();
+
             }else if(date1.compareTo(date2)<0){
                 mApiService.addProjectRequest(user, nProject.getText().toString(),startProject, endProject, dProject.getText().toString(), 1, nHP.getText().toString(), xOrang.getText().toString())
                         .enqueue(new Callback<ResponseBody>() {
@@ -209,6 +211,7 @@ public class activity_add_project extends AppCompatActivity {
                                         JSONObject jsonRESULTS = new JSONObject(response.body().string());
                                         if (jsonRESULTS.getString("status").matches("200")){
                                             Toast.makeText(mContext, "BERHASIL Register Project", Toast.LENGTH_SHORT).show();
+                                            sendFCM();
                                             Intent intent = new Intent(activity_add_project.this, getProject.class);
                                             startActivity(intent);
                                         } else {
@@ -237,6 +240,20 @@ public class activity_add_project extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    private void sendFCM() {
+        mApiService.sendFCM().enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
     }
 
 
