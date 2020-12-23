@@ -12,6 +12,7 @@ public class project implements Serializable {
     private String no_hp;
     private String max_orang;
     private String user_id;
+    private String project_image;
 
     public String getId() {
         return id;
@@ -85,6 +86,14 @@ public class project implements Serializable {
         this.user_id = user_id;
     }
 
+    public String getProject_image() {
+        return project_image;
+    }
+
+    public void setProject_image(String project_image) {
+        this.project_image = project_image;
+    }
+
     @Override
     public String toString() {
         return "project{" +
@@ -97,6 +106,7 @@ public class project implements Serializable {
                 ", no_hp='" + no_hp + '\'' +
                 ", max_orang='" + max_orang + '\'' +
                 ", user_id='" + user_id + '\'' +
+                ", project_image='" + project_image + '\'' +
                 '}';
     }
 }

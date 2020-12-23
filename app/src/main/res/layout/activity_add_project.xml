@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity_add_project"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,16 +42,30 @@
                 android:textColor="@color/blackk"
                 android:layout_marginLeft="30dp"/>
 
-            <EditText
-                android:id="@+id/start_project"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginVertical="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="YYYY/MM/DD"
-                android:drawableLeft="@drawable/black_date"
-                android:drawablePadding="20dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/start_project"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Tanggal Mulai"
+                    android:drawableLeft="@drawable/black_date"
+                    android:drawablePadding="20dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+
+                <Button
+                    android:id="@+id/select_start_date"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Select Date"
+                    android:textColor="@color/blackk"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -59,17 +74,30 @@
                 android:textSize="20dp"
                 android:textColor="@color/blackk"
                 android:layout_marginLeft="30dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/end_project"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Tanggal Selesai"
+                    android:drawableLeft="@drawable/black_date"
+                    android:drawablePadding="20dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
 
-            <EditText
-                android:id="@+id/end_project"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginVertical="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="YYYY/MM/DD"
-                android:drawableLeft="@drawable/black_date"
-                android:drawablePadding="20dp"/>
+                <Button
+                    android:id="@+id/select_end_date"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Select Date"
+                    android:textColor="@color/blackk"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -125,6 +153,26 @@
                 android:hint="Maksimal Pertisipan"
                 android:drawableLeft="@drawable/black_person"
                 android:drawablePadding="20dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+                <ImageView
+                    android:id="@+id/project_image"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/android_banner_foreground" />
+
+                <Button
+                    android:id="@+id/select_image"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Select Image"
+                    android:textColor="@color/blackk" />
+            </LinearLayout>
 
             <Button
                 android:layout_width="120dp"

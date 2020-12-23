@@ -33,13 +33,14 @@ public interface BaseAPIService {
     @FormUrlEncoded
     @POST("add-project-api")
     Call<ResponseBody> addProjectRequest(@Field("username") String username,
-                                       @Field("nama_project") String nama_project,
-                                       @Field("start_project") String start_project,
-                                       @Field("end_project") String end_project,
-                                       @Field("desc_project") String desc_project,
-                                       @Field("status_project") int status_project,
-                                       @Field("no_hp") String no_hp,
-                                       @Field("max_orang") String max_orang);
+                                         @Field("nama_project") String nama_project,
+                                         @Field("start_project") String start_project,
+                                         @Field("end_project") String end_project,
+                                         @Field("desc_project") String desc_project,
+                                         @Field("status_project") int status_project,
+                                         @Field("no_hp") String no_hp,
+                                         @Field("max_orang") String max_orang,
+                                         @Field("encoded_image") String encoded_image);
 
     @FormUrlEncoded
     @POST("get-project")
