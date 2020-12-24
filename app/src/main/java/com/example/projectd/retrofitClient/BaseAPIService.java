@@ -1,5 +1,6 @@
 package com.example.projectd.retrofitClient;
 
+import com.example.projectd.Model.DetailProjectModel;
 import com.example.projectd.Model.project;
 
 import java.util.List;
@@ -79,4 +80,28 @@ public interface BaseAPIService {
     @POST("fcm-topics")
     Call<ResponseBody> fcmTopics(@Field("fcm") String fcm,
                                  @Field("message") String message);
+
+    @FormUrlEncoded
+    @POST("detail-my-project")
+    Call<List<project>> getMyDetailProject(@Field("id_user") String id_user);
+
+    @FormUrlEncoded
+    @POST("join-project")
+    Call<ResponseBody> joinProject(@Field("id_project") String id_project,
+                                   @Field("id_user") String id_user);
+
+    @FormUrlEncoded
+    @POST("read-joined-project")
+    Call<DetailProjectModel> detailProject(@Field("id_user") String id_user);
+
+    @FormUrlEncoded
+    @POST("leave-project")
+    Call<ResponseBody> leaveProject(@Field("id_project") String id_project,
+                                    @Field("id_user") String id_user);
+
+    @FormUrlEncoded
+    @POST("post-progress")
+    Call<ResponseBody> postProgressProject(@Field("id_project") String id_project,
+                                           @Field("id_user") String id_user,
+                                           @Field("encoded_image") String encoded_image);
 }

@@ -1,6 +1,7 @@
 package com.example.projectd;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +50,13 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
         String start_date = project.getStart_project();
         String end_date = project.getEnd_project();
         String max_orang = project.getMax_orang();
-        Picasso.get().load("https://www.nusabali.com/event_images/78/bkft53-blaze-of-solidarity-2018-10-06-033630_0.jpg").into(holder.imageView);
+        String project_image = project.getProject_image();
+        if(project_image!=null){
+            Picasso.get().load("https://000projectd.000webhostapp.com/project_images/"+project_image).into(holder.imageView);
+        } else {
+            Picasso.get().load("https://www.complexsql.com/wp-content/uploads/2018/11/null.png").into(holder.imageView);
+        }
+
         if(project.getStatus_project().matches("1")){
             holder.nama_project.setText(nama_project.concat(" (Active)"));
             holder.cardView.setOnClickListener(new View.OnClickListener() {

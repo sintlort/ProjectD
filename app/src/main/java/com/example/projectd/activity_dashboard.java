@@ -29,8 +29,8 @@ public class activity_dashboard extends AppCompatActivity {
         removeAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shared_preference_class.clearLoggedInUser(mContext);
-                Intent intent = new Intent(mContext, MainActivity.class);
+
+                Intent intent = new Intent(mContext, JoinedProject.class);
                 startActivity(intent);
             }
         });
