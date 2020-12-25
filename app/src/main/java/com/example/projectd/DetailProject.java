@@ -94,6 +94,8 @@ public class DetailProject extends AppCompatActivity {
                         if (jsonRESULTS.getString("status").matches("200")){
                             String message = jsonRESULTS.getString("message");
                             Toast.makeText(mContext,message,Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(mContext, getProject.class);
+                            startActivity(intent);
                         } else {
                             String error_message = jsonRESULTS.getString("message");
                             if (error_message.equals("data not found")){
@@ -106,13 +108,14 @@ public class DetailProject extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 } else {
-
+                    Toast.makeText(mContext, "HARAP PERIKSA KONEKSI ANDA!!", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-
+                t.printStackTrace();
+                Toast.makeText(mContext, "HARAP PERIKSA KONEKSI ANDA!!", Toast.LENGTH_SHORT).show();
             }
         });
     }

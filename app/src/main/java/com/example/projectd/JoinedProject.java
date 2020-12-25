@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.projectd.Model.project;
 import com.example.projectd.Preference.shared_preference_class;
@@ -39,7 +40,6 @@ public class JoinedProject extends AppCompatActivity implements ProjectAdapter.C
         botNav.setOnNavigationItemSelectedListener(navListener);
         botNav.setSelectedItemId(R.id.project);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mContext = this;
         projectAdapter = new ProjectAdapter(this::ClickedProject);
 
@@ -63,6 +63,7 @@ public class JoinedProject extends AppCompatActivity implements ProjectAdapter.C
             @Override
             public void onFailure(Call<List<project>> call, Throwable t) {
                 Log.e("failure", t.getLocalizedMessage());
+                Toast.makeText(mContext, "HARAP PERIKSA KONEKSI ANDA!!", Toast.LENGTH_SHORT).show();
             }
         });
     }

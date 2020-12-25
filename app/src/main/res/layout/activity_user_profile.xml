@@ -37,7 +37,7 @@
             android:layout_marginLeft="15dp"/>
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/small_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Doddy Pratama"
@@ -161,6 +161,7 @@
             android:hint="Full Name">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bottom_area_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="10dp"
@@ -177,6 +178,7 @@
             android:hint="Address">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bottom_area_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="10dp"
@@ -193,6 +195,7 @@
             android:hint="Email">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bottom_area_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="10dp"
@@ -209,6 +212,7 @@
             android:hint="Telephone">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bottom_area_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="10dp"
@@ -220,6 +224,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
+            android:id="@+id/update_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Update Profile"
@@ -227,6 +232,7 @@
             android:background="#86a9dc"/>
 
         <Button
+            android:id="@+id/update_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Update Password"

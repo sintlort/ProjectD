@@ -13,9 +13,11 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.projectd.Model.project;
 import com.example.projectd.Preference.shared_preference_class;
+import com.example.projectd.SQLite.DBCRUDHelper;
 import com.example.projectd.retrofitClient.UtilsApi;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -30,6 +32,7 @@ public class getAllProject extends AppCompatActivity implements ProjectAdapter.C
     RecyclerView recyclerView;
     ProjectAdapter projectAdapter;
     Context mContext;
+    List<project> projectList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +60,7 @@ public class getAllProject extends AppCompatActivity implements ProjectAdapter.C
             public void onResponse(Call<List<project>> call, Response<List<project>> response) {
                 if(response.isSuccessful()){
                     Log.e("success", response.body().toString());
-                    List<project> projectList = response.body();
+                    projectList = response.body();
                     projectAdapter.setData(projectList);
                     recyclerView.setAdapter(projectAdapter);
                 }
@@ -66,6 +69,13 @@ public class getAllProject extends AppCompatActivity implements ProjectAdapter.C
             @Override
             public void onFailure(Call<List<project>> call, Throwable t) {
                 Log.e("failure", t.getLocalizedMessage());
+                Toast.makeText(mContext, "HARAP PERIKSA KONEKSI ANDA!!", Toast.LENGTH_SHORT).show();
+                final DBCRUDHelper dbcrudHelper = new DBCRUDHelper(mContext);
+                dbcrudHelper.open();
+                projectList = dbcrudHelper.myProjectQuery();
+                dbcrudHelper.close();
+                projectAdapter.setData(projectList);
+                recyclerView.setAdapter(projectAdapter);
             }
         });
     }

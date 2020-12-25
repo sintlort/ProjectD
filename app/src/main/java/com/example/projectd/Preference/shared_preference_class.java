@@ -50,22 +50,48 @@ public class shared_preference_class {
         return (LOGGED_ARRAY);
     }
 
+
+
     /** Mengembalikan nilai dari key KEY_STATUS_SEDANG_LOGIN berupa boolean */
     public static boolean getLoggedInStatus(Context context){
         return getSharedPreference(context).getBoolean(KEY_STATUS_LOGIN,false);
     }
-
     public static String getUsername(Context context){
         return getSharedPreference(context).getString(LOGGED_IN_USER,"");
     }
-
     public static String getLoggedInId(Context context){
         return getSharedPreference(context).getString(LOGGED_IN_ID,"");
+    }
+    public static String getLoggedInName(Context context){
+        return getSharedPreference(context).getString(LOGGED_IN_NAME,"");
+    }
+    public static String getLoggedInTanggalLahir(Context context){
+        return getSharedPreference(context).getString(LOGGED_IN_TANGGAL_LAHIR,"");
+    }
+    public static String getLoggedInAlamat(Context context){
+        return getSharedPreference(context).getString(LOGGED_IN_ALAMAT,"");
+    }
+    public static String getLoggedInEmail(Context context){
+        return getSharedPreference(context).getString(LOGGED_IN_EMAIL,"");
+    }
+    public static String getLoggedInTelp(Context context){
+        return getSharedPreference(context).getString(LOGGED_IN_TELP,"");
+    }
+    public static String getLoggedInJeniskelamin(Context context){
+        return getSharedPreference(context).getString(LOGGED_IN_JENISKELAMIN,"");
+    }
+
+    public static void setUpdatedProfileData(Context context, String address, String email, String phone){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString(LOGGED_IN_ALAMAT, address);
+        editor.putString(LOGGED_IN_EMAIL, email);
+        editor.putString(LOGGED_IN_TELP, phone);
+        editor.apply();
     }
 
     /** Deklarasi Edit Preferences dan menghapus data, sehingga menjadikannya bernilai default
      *  khusus data yang memiliki key KEY_USERNAME_SEDANG_LOGIN dan KEY_STATUS_SEDANG_LOGIN */
-    public static void clearLoggedInUser (Context context){
+    public static void clearLoggedInUser(Context context){
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
         editor.remove(LOGGED_IN_ID);
         editor.remove(LOGGED_IN_USER);

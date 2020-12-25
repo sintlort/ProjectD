@@ -91,13 +91,14 @@ public class UpdateProject extends AppCompatActivity {
                                         e.printStackTrace();
                                     }
                                 } else {
-
+                                    Toast.makeText(mContext, "HARAP PERIKSA KONEKSI ANDA!!", Toast.LENGTH_SHORT).show();
                                 }
                             }
 
                             @Override
                             public void onFailure(Call<ResponseBody> call, Throwable t) {
-
+                                t.printStackTrace();
+                                Toast.makeText(mContext, "HARAP PERIKSA KONEKSI ANDA!!", Toast.LENGTH_SHORT).show();
                             }
                         });
             }

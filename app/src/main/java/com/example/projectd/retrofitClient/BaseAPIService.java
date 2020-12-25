@@ -1,6 +1,7 @@
 package com.example.projectd.retrofitClient;
 
 import com.example.projectd.Model.DetailProjectModel;
+import com.example.projectd.Model.progressImageModel;
 import com.example.projectd.Model.project;
 
 import java.util.List;
@@ -104,4 +105,30 @@ public interface BaseAPIService {
     Call<ResponseBody> postProgressProject(@Field("id_project") String id_project,
                                            @Field("id_user") String id_user,
                                            @Field("encoded_image") String encoded_image);
+
+    @FormUrlEncoded
+    @POST("get-progress-image")
+    Call<List<progressImageModel>> getProgressImageAPI(@Field("id_project") String id_project,
+                                                       @Field("id_user") String id_user);
+
+    @FormUrlEncoded
+    @POST("get-the-f-out-of-project")
+    Call<ResponseBody> GTFOP(@Field("id_project") String id_project,
+                             @Field("id_user") String id_user);
+
+    @FormUrlEncoded
+    @POST("update-profile")
+    Call<ResponseBody> updateProfile(@Field("id_user") String id_user,
+                                     @Field("alamat") String alamat,
+                                     @Field("email") String email,
+                                     @Field("telp") String telp);
+
+    @FormUrlEncoded
+    @POST("update-password")
+    Call<ResponseBody> updatePassword(@Field("username") String username,
+                                      @Field("password_lama") String password_lama,
+                                      @Field("password_baru") String password_baru);
+
+    @GET("get-the-project-d")
+    Call<List<project>> getTheProjectD();
 }

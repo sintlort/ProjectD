@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.inputPassword);
         mContext = this;
         mApiService = UtilsApi.getAPIService();
-        DBProject dbProject = new DBProject(getBaseContext());
-        Toast.makeText(getApplication(), dbProject.getDatabaseName(), Toast.LENGTH_SHORT).show();
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
