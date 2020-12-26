@@ -116,6 +116,8 @@ public class getProject extends AppCompatActivity implements ProjectAdapter.Clic
                             startActivity(intent1);
                             break;
                         case R.id.profile:
+                            Intent profile = new Intent(getProject.this, ProfileUser.class);
+                            startActivity(profile);
                             break;
                     }
                     return true;

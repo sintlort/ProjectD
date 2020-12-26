@@ -131,4 +131,13 @@ public interface BaseAPIService {
 
     @GET("get-the-project-d")
     Call<List<project>> getTheProjectD();
+
+    @FormUrlEncoded
+    @POST("count-my-joined-project")
+    Call<ResponseBody> countMyAndJoinedProject(@Field("id") String id);
+
+    @FormUrlEncoded
+    @POST("get-my-progress-image")
+    Call<List<progressImageModel>> getMyProgressImage(@Field("id_project") String id_project);
+
 }

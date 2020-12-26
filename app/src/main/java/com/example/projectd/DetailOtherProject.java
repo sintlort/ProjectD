@@ -1,11 +1,13 @@
 package com.example.projectd;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import com.example.projectd.Preference.shared_preference_class;
 import com.example.projectd.Model.project;
 import com.example.projectd.retrofitClient.BaseAPIService;
 import com.example.projectd.retrofitClient.UtilsApi;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -37,6 +40,9 @@ public class DetailOtherProject extends AppCompatActivity {
         start_Theproject = findViewById(R.id.start_other_project);
         deadline_project = findViewById(R.id.deadline_other_project);
         description_project = findViewById(R.id.description_other_project);
+        BottomNavigationView botNav = findViewById(R.id.botnav);
+        botNav.setOnNavigationItemSelectedListener(navListener);
+        botNav.setSelectedItemId(R.id.other_project);
         mApiService = UtilsApi.getAPIService();
         mContext = this;
         showProject();
@@ -90,4 +96,28 @@ public class DetailOtherProject extends AppCompatActivity {
             description_project.setText(descriptionOfProject);
         }
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                    switch(menuItem.getItemId()){
+                        case R.id.dashboard:
+                            Intent intento = new Intent(DetailOtherProject.this, activity_dashboard.class);
+                            startActivity(intento);
+                            break;
+                        case R.id.project:
+                            Intent intent = new Intent(DetailOtherProject.this, getProject.class);
+                            startActivity(intent);
+                            break;
+                        case R.id.other_project:
+                            break;
+                        case R.id.profile:
+                            Intent profile = new Intent(DetailOtherProject.this, ProfileUser.class);
+                            startActivity(profile);
+                            break;
+                    }
+                    return true;
+                }
+            };
 }

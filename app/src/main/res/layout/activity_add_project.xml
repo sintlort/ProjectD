@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity_add_project"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -14,7 +13,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -132,6 +132,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/black_phone"
+                android:inputType="phone"
                 android:drawablePadding="20dp"
                 android:hint="No HP yang dapat dihubungi" />
 
@@ -151,6 +152,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Maksimal Pertisipan"
+                android:inputType="number"
                 android:drawableLeft="@drawable/black_person"
                 android:drawablePadding="20dp"/>
 

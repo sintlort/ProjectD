@@ -1,25 +1,33 @@
 package com.example.projectd;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.projectd.Adapter.ProgressImageAdapter;
+import com.example.projectd.Model.progressImageModel;
 import com.example.projectd.Model.project;
 import com.example.projectd.Preference.shared_preference_class;
 import com.example.projectd.retrofitClient.BaseAPIService;
 import com.example.projectd.retrofitClient.UtilsApi;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -34,10 +42,17 @@ public class DetailProject extends AppCompatActivity {
     BaseAPIService mApiService;
     String id_project,status_project;
     Context mContext;
+    RecyclerView recyclerView;
+    ProgressImageAdapter progressImageAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_project);
+        BottomNavigationView botNav = findViewById(R.id.botnav);
+        botNav.setOnNavigationItemSelectedListener(navListener);
+        botNav.setSelectedItemId(R.id.project);
+        recyclerView = findViewById(R.id.recycler_image_show_progress);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         nama = findViewById(R.id.nama);
         start = findViewById(R.id.tanggalstart);
         end = findViewById(R.id.tanggalend);
@@ -45,6 +60,7 @@ public class DetailProject extends AppCompatActivity {
         editproject = findViewById(R.id.edit_project);
         stopproject = findViewById(R.id.stop_project);
         mApiService = UtilsApi.getAPIService();
+        getProgressImage();
         mContext = this;
 
         Intent intent = getIntent();
@@ -65,7 +81,6 @@ public class DetailProject extends AppCompatActivity {
 
         if(this.status_project.matches("0")){
             stopproject.setVisibility(View.GONE);
-
         }
 
         editproject.setOnClickListener(new View.OnClickListener() {
@@ -119,4 +134,52 @@ public class DetailProject extends AppCompatActivity {
             }
         });
     }
+
+    private void getProgressImage() {
+        Call<List<progressImageModel>> call = (Call<List<progressImageModel>>) UtilsApi.getAPIService().getMyProgressImage(id_project);
+        call.enqueue(new Callback<List<progressImageModel>>() {
+            @Override
+            public void onResponse(Call<List<progressImageModel>> call, Response<List<progressImageModel>> response) {
+                if(response.isSuccessful()){
+                    List<progressImageModel> progressImageModels = response.body();
+                    progressImageAdapter = new ProgressImageAdapter(progressImageModels);
+                    recyclerView.setAdapter(progressImageAdapter);
+                } else{
+                    Toast.makeText(mContext, "Gagal load image progress",Toast.LENGTH_SHORT);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<progressImageModel>> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(mContext, "HARAP PERIKSA KONEKSI ANDA!!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                    switch(menuItem.getItemId()){
+                        case R.id.dashboard:
+                            Intent intent0 = new Intent(DetailProject.this, activity_dashboard.class);
+                            startActivity(intent0);
+                            break;
+                        case R.id.project:
+                            break;
+                        case R.id.other_project:
+                            Intent intent2 = new Intent(DetailProject.this, getAllProject.class);
+                            startActivity(intent2);
+                            break;
+                        case R.id.profile:
+                            Intent profile = new Intent(DetailProject.this, ProfileUser.class);
+                            startActivity(profile);
+                            break;
+                    }
+                    return true;
+                }
+            };
+
+
 }

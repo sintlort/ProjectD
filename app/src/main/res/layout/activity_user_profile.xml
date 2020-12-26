@@ -77,11 +77,11 @@
                     android:layout_centerHorizontal="true"/>
                 
                 <TextView
-                    android:id="@+id/my_project"
+                    android:id="@+id/user_my_project"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/image_my_project"
-                    android:text="10"
+                    android:text="0"
                     android:includeFontPadding="false"
                     android:textColor="@color/blackk"
                     android:textSize="20sp"
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:text="My Project"
                     android:textSize="14sp"
-                    android:layout_below="@id/my_project"
+                    android:layout_below="@id/user_my_project"
                     android:layout_centerHorizontal="true"/>
 
 
@@ -122,11 +122,11 @@
                     android:layout_centerHorizontal="true"/>
 
                 <TextView
-                    android:id="@+id/joined_project"
+                    android:id="@+id/user_joined_project"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/image_joined_project"
-                    android:text="20"
+                    android:text="0"
                     android:includeFontPadding="false"
                     android:textColor="@color/blackk"
                     android:textSize="20sp"
@@ -138,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:text="Joined Project"
                     android:textSize="14sp"
-                    android:layout_below="@id/joined_project"
+                    android:layout_below="@id/user_joined_project"
                     android:layout_centerHorizontal="true"/>
 
 

@@ -78,7 +78,7 @@ public class EditProfile extends AppCompatActivity {
                         if(response.isSuccessful()){
                             Toast.makeText(mContext, "Profile berhasil diupdate",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(EditProfile.this, ProfileUser.class);
-                            shared_preference_class.setUpdatedProfileData(mContext, data.get(0), data.get(1), data.get(2));
+                            shared_preference_class.setUpdatedProfileData(mContext, data.get(2), data.get(0), data.get(1));
                             startActivity(intent);
                         } else {
                             Toast.makeText(mContext, "Profile tidak berhasil diupdate", Toast.LENGTH_SHORT).show();

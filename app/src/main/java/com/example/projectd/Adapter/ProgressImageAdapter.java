@@ -1,6 +1,8 @@
 package com.example.projectd.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,13 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectd.Model.progressImageModel;
 import com.example.projectd.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProgressImageAdapter extends RecyclerView.Adapter<ProgressImageAdapter.MyViewHolder> {
@@ -24,6 +26,7 @@ public class ProgressImageAdapter extends RecyclerView.Adapter<ProgressImageAdap
     public ProgressImageAdapter(List<progressImageModel> progressImageModels) {
         this.progressImageModels = progressImageModels;
     }
+
 
     @NonNull
     @Override
@@ -37,8 +40,10 @@ public class ProgressImageAdapter extends RecyclerView.Adapter<ProgressImageAdap
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         progressImageModel progressImageModel = progressImageModels.get(position);
+        String url = "https://000projectd.000webhostapp.com/progress_images/"+progressImageModel.getImage();
         Picasso.get().load("https://000projectd.000webhostapp.com/progress_images/"+progressImageModel.getImage()).into(holder.imageView);
         holder.textView.setText(progressImageModel.getCreated_at());
+
     }
 
     @Override

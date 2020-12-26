@@ -103,6 +103,8 @@ public class getAllProject extends AppCompatActivity implements ProjectAdapter.C
                         case R.id.other_project:
                             break;
                         case R.id.profile:
+                            Intent profile = new Intent(getAllProject.this, ProfileUser.class);
+                            startActivity(profile);
                             break;
                     }
                     return true;

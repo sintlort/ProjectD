@@ -11,17 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditProfile"/>
-        <activity android:name=".UpdatePassword"/>
-        <activity android:name=".JoinedProject"></activity>
+        <activity android:name=".EditProfile" android:noHistory="true"/>
+        <activity android:name=".UpdatePassword" android:noHistory="true"/>
+        <activity android:name=".JoinedProject"/>
         <activity android:name=".detail_joined_project" />
         <activity android:name=".ProfileUser" />
-        <activity android:name=".UpdateProject" />
+        <activity android:name=".UpdateProject" android:noHistory="true"/>
         <activity android:name=".DetailOtherProject" />
         <activity android:name=".getAllProject" />
         <activity android:name=".DetailProject" />
         <activity android:name=".getProject" />
-        <activity android:name=".activity_add_project" />
+        <activity android:name=".activity_add_project" android:noHistory="true"/>
         <activity android:name=".activity_dashboard" />
         <activity android:name=".register_activity" />
         <activity

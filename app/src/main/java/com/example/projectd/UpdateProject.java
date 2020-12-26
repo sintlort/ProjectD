@@ -2,12 +2,14 @@ package com.example.projectd;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,6 +21,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 import okhttp3.ResponseBody;
 import okhttp3.internal.Util;
@@ -29,10 +34,12 @@ import retrofit2.Response;
 public class UpdateProject extends AppCompatActivity {
     EditText namaProject, startProject, endProject, descProject, maxOrang, noHp;
     project Project;
-    Button submit_update;
+    Button submit_update, selectStartDate, selectEndDate;
     String id_project;
     BaseAPIService baseAPIService;
     Context mContext;
+    DatePickerDialog datePickerDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +51,21 @@ public class UpdateProject extends AppCompatActivity {
         maxOrang = findViewById(R.id.update_max_orang);
         noHp = findViewById(R.id.update_no_Hproject);
         submit_update = findViewById(R.id.submit_update_project);
+        selectStartDate = findViewById(R.id.select_update_start_date);
+        selectStartDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDateDialog(startProject);
+            }
+        });
+
+        selectEndDate = findViewById(R.id.select_end_date);
+        selectEndDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDateDialog(endProject);
+            }
+        });
         baseAPIService = UtilsApi.getAPIService();
         mContext = this;
 
@@ -103,5 +125,24 @@ public class UpdateProject extends AppCompatActivity {
                         });
             }
         });
+    }
+
+    private void showDateDialog(EditText editText) {
+        Calendar newCalendar = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+
+        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                editText.setText(df.format(newDate.getTime()));
+
+            }
+
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
+        datePickerDialog.show();
     }
 }

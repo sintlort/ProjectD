@@ -1,5 +1,6 @@
 package com.example.projectd;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ import com.example.projectd.Model.project;
 import com.example.projectd.retrofitClient.BaseAPIService;
 import com.example.projectd.retrofitClient.UtilsApi;
 import com.example.projectd.Preference.shared_preference_class;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -47,7 +50,7 @@ public class detail_joined_project extends AppCompatActivity {
     BaseAPIService mApiService;
     Bitmap bitmap;
     Context mContext;
-    ProgressImageAdapter progressImageAdapter;
+    ProgressImageAdapter progressImageAdapter, progressImageAdapterz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,8 @@ public class detail_joined_project extends AppCompatActivity {
         description_project = findViewById(R.id.detail_description_project);
         recyclerView = findViewById(R.id.recycler_image_progress);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        BottomNavigationView botNav = findViewById(R.id.botnav);
+        botNav.setOnNavigationItemSelectedListener(navListener);
         showProject();
         getProgressImage();
         pick_image = findViewById(R.id.pick_image);
@@ -91,6 +96,8 @@ public class detail_joined_project extends AppCompatActivity {
                 getTheFOutOfProject();
             }
         });
+
+
     }
 
     private void selectImage() {
@@ -205,4 +212,31 @@ public class detail_joined_project extends AppCompatActivity {
                     }
                 });
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                    switch(menuItem.getItemId()){
+                        case R.id.dashboard:
+                            Intent intent = new Intent(detail_joined_project.this, activity_dashboard.class);
+                            startActivity(intent);
+                            break;
+                        case R.id.project:
+                            Intent intent1 = new Intent(detail_joined_project.this, getProject.class);
+                            startActivity(intent1);
+                            break;
+                        case R.id.other_project:
+                            Intent intent2 = new Intent(detail_joined_project.this, getAllProject.class);
+                            startActivity(intent2);
+                            break;
+                        case R.id.profile:
+                            Intent profile = new Intent(detail_joined_project.this, ProfileUser.class);
+                            startActivity(profile);
+                            break;
+                    }
+                    return true;
+                }
+            };
+
 }

@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
                                     String email = jsonRESULTS.getJSONObject("user").getString("email");
                                     String phone = jsonRESULTS.getJSONObject("user").getString("telp");
                                     shared_preference_class.setLoggedInUser(mContext,_id,user,nama,dob,address,email,phone,gender);
-                                    Toast.makeText(mContext, nama, Toast.LENGTH_SHORT).show();
                                     Intent dashboard = new Intent(MainActivity.this, activity_dashboard.class);
                                     startActivity(dashboard);
                                 } else {
@@ -104,13 +103,14 @@ public class MainActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                         } else {
-
+                            Toast.makeText(mContext, "GAGAL LOGIN!!", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
                         Log.e("debug", "onFailure: ERROR > " + t.toString());
+                        Toast.makeText(mContext, "HARAP PERIKSA KONEKSI ANDA!!", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -38,7 +38,6 @@ public class JoinedProject extends AppCompatActivity implements ProjectAdapter.C
         recyclerView = findViewById(R.id.recyclerDetailProject);
         BottomNavigationView botNav = findViewById(R.id.botnav);
         botNav.setOnNavigationItemSelectedListener(navListener);
-        botNav.setSelectedItemId(R.id.project);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mContext = this;
         projectAdapter = new ProjectAdapter(this::ClickedProject);
@@ -85,10 +84,16 @@ public class JoinedProject extends AppCompatActivity implements ProjectAdapter.C
                             startActivity(intent);
                             break;
                         case R.id.project:
+                            Intent intent1 = new Intent(JoinedProject.this, getProject.class);
+                            startActivity(intent1);
                             break;
                         case R.id.other_project:
+                            Intent intent2 = new Intent(JoinedProject.this, getAllProject.class);
+                            startActivity(intent2);
                             break;
                         case R.id.profile:
+                            Intent intent3 = new Intent(JoinedProject.this, ProfileUser.class);
+                            startActivity(intent3);
                             break;
                     }
                     return true;

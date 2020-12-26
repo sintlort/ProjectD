@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_weight="9">
+        android:layout_weight="1">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,7 +23,8 @@
                 android:layout_width="180dp"
                 android:layout_height="180dp"
                 android:layout_margin="15dp"
-                android:clickable="true">
+                android:clickable="true"
+                app:cardCornerRadius="30dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -33,17 +34,20 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/ic_baseline_dashboard_24"
+                        android:src="@drawable/box_add_blue"
                         android:padding="15dp"/>
+
                     <View
                         android:layout_width="wrap_content"
                         android:layout_height="1dp"
-                        android:background="#D3D3D3"
-                        android:layout_margin="10dp"/>
+                        android:layout_margin="10dp"
+                        android:background="#295CFF"
+                        android:backgroundTint="#295CFF"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/myproject"
+                        android:textColor="@color/blackk"
                         android:textSize="20dp"
                         android:layout_margin="5dp"/>
 
@@ -55,7 +59,8 @@
                 android:layout_width="180dp"
                 android:layout_height="180dp"
                 android:layout_margin="15dp"
-                android:clickable="true">
+                android:clickable="true"
+                app:cardCornerRadius="30dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -65,19 +70,21 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/ic_baseline_dashboard_24"
+                        android:src="@drawable/blue_search"
                         android:padding="15dp"/>
                     <View
                         android:layout_width="wrap_content"
                         android:layout_height="1dp"
                         android:background="#D3D3D3"
-                        android:layout_margin="10dp"/>
+                        android:layout_margin="10dp"
+                        android:backgroundTint="#295CFF"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/allproject"
                         android:textSize="20dp"
-                        android:layout_margin="5dp"/>
+                        android:layout_margin="5dp"
+                        android:textColor="@color/blackk"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -89,12 +96,13 @@
             android:gravity="center">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_about"
+                android:id="@+id/card_joined"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="180dp"
                 android:layout_height="180dp"
                 android:layout_margin="15dp"
-                android:clickable="true">
+                android:clickable="true"
+                app:cardCornerRadius="30dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -104,18 +112,97 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:padding="15dp"/>
+                        android:padding="15dp"
+                        android:src="@drawable/ic_baseline_group_24"/>
                     <View
                         android:layout_width="wrap_content"
                         android:layout_height="1dp"
                         android:background="#D3D3D3"
-                        android:layout_margin="10dp"/>
+                        android:layout_margin="10dp"
+                        android:backgroundTint="#295CFF"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="About"
+                        android:text="Joined Project"
                         android:textSize="20dp"
-                        android:layout_margin="5dp"/>
+                        android:layout_margin="5dp"
+                        android:textColor="@color/blackk"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_profile"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_margin="15dp"
+                android:clickable="true"
+                app:cardCornerRadius="30dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="5dp">
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:padding="15dp"
+                        android:src="@drawable/blue_smile_face"/>
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:background="#D3D3D3"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="#295CFF"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Profile"
+                        android:textSize="20dp"
+                        android:layout_margin="5dp"
+                        android:textColor="@color/blackk"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_exit"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_margin="15dp"
+                android:clickable="true"
+                app:cardCornerRadius="30dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="5dp">
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:padding="15dp"
+                        android:src="@drawable/blue_exit"/>
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:background="#D3D3D3"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="#295CFF"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Log Out"
+                        android:textSize="20dp"
+                        android:layout_margin="5dp"
+                        android:textColor="@color/blackk"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -124,9 +211,8 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/botnav"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_weight="3"
             android:background="?android:windowBackground"
             app:menu="@menu/bottom_navigation"/>
 </LinearLayout>

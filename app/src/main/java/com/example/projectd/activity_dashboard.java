@@ -28,7 +28,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class activity_dashboard extends AppCompatActivity {
-    CardView addProject, removeAccount, otherProject;
+    CardView addProject, joinedProject, otherProject, profile, logout;
     Context mContext;
 
     BaseAPIService mApiService;
@@ -37,17 +37,23 @@ public class activity_dashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        removeAccount = findViewById(R.id.card_about);
-        otherProject = findViewById(R.id.card_register);
         mContext = this;
         mApiService = UtilsApi.getAPIService();
+        initBotNav();
+        getProjectData();
+        initCardView();
+    }
+
+    private void initBotNav() {
         BottomNavigationView botNav = findViewById(R.id.botnav);
         botNav.setOnNavigationItemSelectedListener(navListener);
-        getProjectData();
-        removeAccount.setOnClickListener(new View.OnClickListener() {
+    }
+
+    private void initCardView() {
+        joinedProject = findViewById(R.id.card_joined);
+        joinedProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(mContext, JoinedProject.class);
                 startActivity(intent);
             }
@@ -60,13 +66,29 @@ public class activity_dashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         otherProject = findViewById(R.id.card_register);
         otherProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity_dashboard.this, getAllProject.class);
                 startActivity(intent);
+            }
+        });
+        profile = findViewById(R.id.card_profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent profileIntent = new Intent(activity_dashboard.this, ProfileUser.class);
+                startActivity(profileIntent);
+            }
+        });
+        logout = findViewById(R.id.card_exit);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shared_preference_class.clearLoggedInUser(mContext);
+                Intent logout = new Intent(activity_dashboard.this, MainActivity.class);
+                startActivity(logout);
             }
         });
     }

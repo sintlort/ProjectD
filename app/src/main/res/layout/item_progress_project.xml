@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
     <androidx.cardview.widget.CardView
+        android:id="@+id/image_progress"
         android:layout_width="match_parent"
         android:layout_height="125dp"
         app:cardCornerRadius="20dp">
