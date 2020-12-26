@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -60,7 +61,7 @@ public class DetailProject extends AppCompatActivity {
         editproject = findViewById(R.id.edit_project);
         stopproject = findViewById(R.id.stop_project);
         mApiService = UtilsApi.getAPIService();
-        getProgressImage();
+
         mContext = this;
 
         Intent intent = getIntent();
@@ -82,6 +83,8 @@ public class DetailProject extends AppCompatActivity {
         if(this.status_project.matches("0")){
             stopproject.setVisibility(View.GONE);
         }
+
+        getProgressImage();
 
         editproject.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,8 +139,7 @@ public class DetailProject extends AppCompatActivity {
     }
 
     private void getProgressImage() {
-        Call<List<progressImageModel>> call = (Call<List<progressImageModel>>) UtilsApi.getAPIService().getMyProgressImage(id_project);
-        call.enqueue(new Callback<List<progressImageModel>>() {
+        mApiService.getMyProgressImage(id_project).enqueue(new Callback<List<progressImageModel>>() {
             @Override
             public void onResponse(Call<List<progressImageModel>> call, Response<List<progressImageModel>> response) {
                 if(response.isSuccessful()){
