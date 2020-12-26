@@ -153,14 +153,12 @@ public class register_activity extends AppCompatActivity {
                                 JSONObject jsonRESULTS = new JSONObject(response.body().string());
                                 if (jsonRESULTS.getString("status").matches("200")){
                                     Toast.makeText(mContext, "BERHASIL REGISTRASI", Toast.LENGTH_SHORT).show();
-                                    String nama = jsonRESULTS.getJSONObject("user").getString("nama_user");
-                                    Toast.makeText(mContext, nama, Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(register_activity.this, MainActivity.class);
                                     startActivity(intent);
                                 } else {
                                     String error_message = jsonRESULTS.getString("message");
                                     if (error_message.equals("username has been used")){
-                                        Toast.makeText(mContext, "Username telah digunakan!!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(mContext, "Username atau password telah digunakan!!", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             } catch (JSONException e) {
@@ -169,13 +167,14 @@ public class register_activity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                         } else {
-
+                            Toast.makeText(mContext, "Registrasi gagal", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
                         Log.e("debug", "onFailure: ERROR > " + t.toString());
+                        Toast.makeText(mContext, "Mohon periksa koneksi anda!!", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
