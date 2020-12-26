@@ -59,7 +59,7 @@ public class UpdateProject extends AppCompatActivity {
             }
         });
 
-        selectEndDate = findViewById(R.id.select_end_date);
+        selectEndDate = findViewById(R.id.select_update_end_date);
         selectEndDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +89,7 @@ public class UpdateProject extends AppCompatActivity {
         submit_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                baseAPIService.updateMyProject(id_project, namaProject.getText().toString(), startProject.getText().toString(), endProject.getText().toString(), descProject.getText().toString(), maxOrang.getText().toString(), noHp.getText().toString())
+                baseAPIService.updateMyProject(id_project, namaProject.getText().toString(), startProject.getText().toString(), endProject.getText().toString(), descProject.getText().toString(), noHp.getText().toString(), maxOrang.getText().toString())
                         .enqueue(new Callback<ResponseBody>() {
                             @Override
                             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

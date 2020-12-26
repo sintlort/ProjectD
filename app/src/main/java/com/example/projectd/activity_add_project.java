@@ -98,10 +98,10 @@ public class activity_add_project extends AppCompatActivity {
         selectImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(intent, IMG_REQUEST);
+                Intent intentz = new Intent();
+                intentz.setType("image/*");
+                intentz.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intentz, IMG_REQUEST);
             }
         });
     }

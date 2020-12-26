@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projectd.Preference.shared_preference_class;
@@ -21,6 +22,7 @@ import retrofit2.Response;
 
 public class UpdatePassword extends AppCompatActivity {
     EditText passwordLama, passwordBaru, passwordBaru2;
+    TextView fullname, smallemail;
     Button submitUpdatePassword;
     BaseAPIService mApiService;
     Context mContext;
@@ -28,11 +30,15 @@ public class UpdatePassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_password);
+        mContext = this;
         passwordLama = findViewById(R.id.password_lama);
         passwordBaru = findViewById(R.id.password_baru);
         passwordBaru2 = findViewById(R.id._ulangi_password_baru);
+        fullname = findViewById(R.id.full_name);
+        smallemail = findViewById(R.id.small_email);
+        fullname.setText(shared_preference_class.getLoggedInName(mContext));
+        smallemail.setText(shared_preference_class.getLoggedInEmail(mContext));
         mApiService = UtilsApi.getAPIService();
-        mContext = this;
         submitUpdatePassword = findViewById(R.id._update_password);
         submitUpdatePassword.setOnClickListener(new View.OnClickListener() {
             @Override

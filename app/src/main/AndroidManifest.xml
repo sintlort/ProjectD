@@ -21,7 +21,7 @@
         <activity android:name=".getAllProject" />
         <activity android:name=".DetailProject" />
         <activity android:name=".getProject" />
-        <activity android:name=".activity_add_project" android:noHistory="true"/>
+        <activity android:name=".activity_add_project"/>
         <activity android:name=".activity_dashboard" />
         <activity android:name=".register_activity" />
         <activity
